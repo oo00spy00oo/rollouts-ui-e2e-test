@@ -40,6 +40,18 @@ spec:
             limits:
               cpu: 50m
               memory: 64Mi
+          volumeMounts:
+            - name: nginx-cache
+              mountPath: /var/cache/nginx
+            - name: var-run
+              mountPath: /var/run
+      volumes:
+        - name: nginx-cache
+          emptyDir:
+            sizeLimit: 16Mi
+        - name: var-run
+          emptyDir:
+            sizeLimit: 8Mi
 ---
 apiVersion: v1
 kind: Service
