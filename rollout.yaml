@@ -45,11 +45,16 @@ spec:
               mountPath: /var/cache/nginx
             - name: var-run
               mountPath: /var/run
+            - name: tmp
+              mountPath: /tmp
       volumes:
         - name: nginx-cache
           emptyDir:
             sizeLimit: 16Mi
         - name: var-run
+          emptyDir:
+            sizeLimit: 8Mi
+        - name: tmp
           emptyDir:
             sizeLimit: 8Mi
 ---
